@@ -20,31 +20,31 @@
   <!-- Content container -->
   <g>
     <!-- Brand name -->
-    <text x="120" y="180" fill="#ffffff" font-family="Inter, system-ui, sans-serif" 
+    <text x="120" y="180" fill="#ffffff" font-family="Arial, sans-serif" 
           font-size="48" font-weight="700" letter-spacing="-0.02em">
       AimerFeng
     </text>
     
     <!-- Subtitle -->
-    <text x="120" y="230" fill="rgba(255, 255, 255, 0.8)" font-family="Inter, system-ui, sans-serif" 
+    <text x="120" y="230" fill="rgba(255, 255, 255, 0.8)" font-family="Arial, sans-serif" 
           font-size="24" font-weight="400">
       Web3 &amp; AI Developer
     </text>
     
     <!-- Title line 1 -->
-    <text x="120" y="330" fill="#ffffff" font-family="Inter, system-ui, sans-serif" 
+    <text x="120" y="330" fill="#ffffff" font-family="Arial, sans-serif" 
           font-size="56" font-weight="600" letter-spacing="-0.02em">
       {{line1}}
     </text>
     
     <!-- Title line 2 -->
-    <text x="120" y="410" fill="#ffffff" font-family="Inter, system-ui, sans-serif" 
+    <text x="120" y="410" fill="#ffffff" font-family="Arial, sans-serif" 
           font-size="56" font-weight="600" letter-spacing="-0.02em">
       {{line2}}
     </text>
     
     <!-- Title line 3 -->
-    <text x="120" y="490" fill="#ffffff" font-family="Inter, system-ui, sans-serif" 
+    <text x="120" y="490" fill="#ffffff" font-family="Arial, sans-serif" 
           font-size="56" font-weight="600" letter-spacing="-0.02em">
       {{line3}}
     </text>

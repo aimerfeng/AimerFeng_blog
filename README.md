@@ -141,7 +141,6 @@ tags: [web3, blockchain]
 
 ## 🙏 致谢
 
-本项目基于 [antfu.me](https://github.com/antfu/antfu.me) 进行开发，感谢 Anthony Fu 的开源贡献。
 
 ---
 
