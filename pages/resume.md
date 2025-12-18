@@ -8,6 +8,16 @@ wrapperClass: 'resume-page'
 <script setup>
 import { resumeData } from '../src/data/resumeData'
 import ResumeSection from '../src/components/ResumeSection.vue'
+
+function getSocialIcon(platform) {
+  const icons = {
+    'GitHub': 'i-carbon-logo-github',
+    'Twitter': 'i-carbon-logo-twitter',
+    'LinkedIn': 'i-carbon-logo-linkedin',
+    'Website': 'i-carbon-link',
+  }
+  return icons[platform] || 'i-carbon-link'
+}
 </script>
 
 <div class="resume-container">
@@ -92,18 +102,6 @@ import ResumeSection from '../src/components/ResumeSection.vue'
     :items="resumeData.projects"
   />
 </div>
-
-<script>
-function getSocialIcon(platform) {
-  const icons = {
-    'GitHub': 'i-carbon-logo-github',
-    'Twitter': 'i-carbon-logo-twitter',
-    'LinkedIn': 'i-carbon-logo-linkedin',
-    'Website': 'i-carbon-link',
-  }
-  return icons[platform] || 'i-carbon-link'
-}
-</script>
 
 <style scoped>
 .resume-container {
