@@ -1,16 +1,32 @@
 <script setup lang="ts">
 import ClickEffect from './components/ClickEffect.vue'
 import LoadingAnimation from './components/LoadingAnimation.vue'
+import QuoteDisplay from './components/QuoteDisplay.vue'
 
 const route = useRoute()
 
 const imageModel = ref<HTMLImageElement>()
 const imageAlt = ref<string>()
 const isLoadingComplete = ref(false)
+const showQuote = ref(false)
+const showMainContent = ref(false)
 
 // Handle loading completion
 function handleLoadingComplete() {
   isLoadingComplete.value = true
+  // Show quote after loading animation completes
+  setTimeout(() => {
+    showQuote.value = true
+  }, 300)
+}
+
+// Handle entry button click
+function handleEnter() {
+  showQuote.value = false
+  // Show main content after quote fades out
+  setTimeout(() => {
+    showMainContent.value = true
+  }, 400)
 }
 
 function setImageModel(img: HTMLImageElement) {
@@ -90,6 +106,25 @@ onKeyStroke('Escape', (e) => {
     @complete="handleLoadingComplete"
   />
 
+  <!-- Quote Display - shown after loading animation -->
+  <Transition name="fade">
+    <div
+      v-if="showQuote && !showMainContent"
+      fixed
+      top-0
+      left-0
+      right-0
+      bottom-0
+      z-100
+      flex
+      items-center
+      justify-center
+      bg="$c-bg"
+    >
+      <QuoteDisplay @enter="handleEnter" />
+    </div>
+  </Transition>
+
   <!-- Click Effect Component -->
   <ClickEffect
     :max-effects="10"
@@ -97,11 +132,11 @@ onKeyStroke('Escape', (e) => {
     :size="30"
   />
 
-  <!-- Main Content - hidden during loading -->
+  <!-- Main Content - hidden during loading and quote display -->
   <div
     :style="{
-      opacity: isLoadingComplete ? 1 : 0,
-      pointerEvents: isLoadingComplete ? 'auto' : 'none',
+      opacity: showMainContent ? 1 : 0,
+      pointerEvents: showMainContent ? 'auto' : 'none',
       transition: 'opacity 0.3s ease-in-out',
     }"
   >
@@ -123,3 +158,16 @@ onKeyStroke('Escape', (e) => {
     </div>
   </Transition>
 </template>
+
+<style>
+/* Fade transition for quote display and image modal */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

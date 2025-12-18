@@ -1,5 +1,5 @@
-import { beforeAll, afterEach, afterAll, vi } from 'vitest'
 import { config } from '@vue/test-utils'
+import { afterAll, afterEach, beforeAll, vi } from 'vitest'
 import { ref } from 'vue'
 
 // Mock VueUse composables
@@ -56,18 +56,19 @@ Object.defineProperty(window, 'matchMedia', {
 })
 
 // Mock IntersectionObserver
-global.IntersectionObserver = class IntersectionObserver {
+globalThis.IntersectionObserver = class IntersectionObserver {
   constructor() {}
   disconnect() {}
   observe() {}
   takeRecords() {
     return []
   }
+
   unobserve() {}
 } as any
 
 // Mock ResizeObserver
-global.ResizeObserver = class ResizeObserver {
+globalThis.ResizeObserver = class ResizeObserver {
   constructor() {}
   disconnect() {}
   observe() {}

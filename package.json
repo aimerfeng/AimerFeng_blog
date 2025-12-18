@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "static": "echo 'Static assets generation skipped'",
     "redirects": "tsx scripts/redirects.ts",
+    "generate-icons": "tsx scripts/generate-icons.ts",
     "lint": "eslint .",
     "test": "vitest --run",
     "test:ui": "vitest --ui",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { isDark } from '~/logics'
 import { useLoadingState } from '../composables/useLoadingState'
 
@@ -11,6 +11,10 @@ interface LoadingAnimationProps {
   minDuration?: number
   /** Fade-out transition duration in milliseconds (default: 600) */
   fadeDuration?: number
+  /** Custom logo source for light theme (default: '/logo.svg') */
+  logoSrc?: string
+  /** Custom logo source for dark theme (default: '/logo-dark.svg') */
+  logoDarkSrc?: string
 }
 
 /**
@@ -24,6 +28,8 @@ interface LoadingAnimationEmits {
 const props = withDefaults(defineProps<LoadingAnimationProps>(), {
   minDuration: 1000,
   fadeDuration: 600,
+  logoSrc: '/logo.svg',
+  logoDarkSrc: '/logo-dark.svg',
 })
 
 const emit = defineEmits<LoadingAnimationEmits>()
@@ -32,9 +38,22 @@ const { isLoading, progress, finishLoading } = useLoadingState()
 const isFadingOut = ref(false)
 const canSkip = ref(false)
 const currentTheme = ref(isDark.value ? 'dark' : 'light')
+const logoError = ref(false)
 let skipTimeout: ReturnType<typeof setTimeout> | null = null
 let loadHandler: (() => void) | null = null
 let skipHandler: ((e: KeyboardEvent | MouseEvent) => void) | null = null
+
+/**
+ * Computed property for theme-aware logo selection
+ * Returns the appropriate logo based on current theme
+ * Falls back to default logo if custom logo fails to load
+ */
+const currentLogo = computed(() => {
+  if (logoError.value) {
+    return '/logo.svg' // Fallback to default logo
+  }
+  return isDark.value ? props.logoDarkSrc : props.logoSrc
+})
 
 /**
  * Watch for theme changes and update component state
@@ -42,6 +61,8 @@ let skipHandler: ((e: KeyboardEvent | MouseEvent) => void) | null = null
  */
 watch(isDark, (newValue) => {
   currentTheme.value = newValue ? 'dark' : 'light'
+  // Reset error state when theme changes to retry loading
+  logoError.value = false
 }, { immediate: true })
 
 /**
@@ -72,6 +93,17 @@ function handleSkip(_e: KeyboardEvent | MouseEvent) {
   // For keyboard events, accept any key
   // For mouse events, accept any click
   handleLoadComplete()
+}
+
+/**
+ * Handle logo loading errors
+ * Falls back to default logo and logs warning
+ */
+function handleLogoError(_e: Event) {
+  if (!logoError.value) {
+    logoError.value = true
+    console.warn('Custom logo failed to load, using default logo')
+  }
 }
 
 onMounted(() => {
@@ -129,7 +161,12 @@ onBeforeUnmount(() => {
       <div class="loading-content">
         <!-- Logo -->
         <div class="loading-logo">
-          <img src="/logo.svg" alt="AimerFeng Blog Logo" class="logo-image">
+          <img
+            :src="currentLogo"
+            alt="AimerFeng Blog Logo"
+            class="logo-image"
+            @error="handleLogoError"
+          >
         </div>
 
         <!-- Spinner -->
