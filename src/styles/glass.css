@@ -1,0 +1,176 @@
+/* Glassmorphism Design System */
+
+:root {
+  /* Glass effect variables - Light theme */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-bg-hover: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-border-hover: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-blur: 10px;
+  
+  /* Background gradient colors - Light theme */
+  --gradient-1: rgba(147, 197, 253, 0.3);  /* Blue */
+  --gradient-2: rgba(196, 181, 253, 0.3);  /* Purple */
+  --gradient-3: rgba(252, 165, 165, 0.3);  /* Pink */
+  --gradient-4: rgba(134, 239, 172, 0.3);  /* Green */
+}
+
+html.dark {
+  /* Glass effect variables - Dark theme */
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-bg-hover: rgba(0, 0, 0, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  /* Background gradient colors - Dark theme */
+  --gradient-1: rgba(59, 130, 246, 0.2);   /* Blue */
+  --gradient-2: rgba(139, 92, 246, 0.2);   /* Purple */
+  --gradient-3: rgba(239, 68, 68, 0.2);    /* Red */
+  --gradient-4: rgba(34, 197, 94, 0.2);    /* Green */
+}
+
+/* Glass container utility class */
+.glass-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+.glass-container:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Glass card with border highlight */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle border highlight effect */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+html.dark .glass-card::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Animated gradient background */
+.glass-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.glass-background::before,
+.glass-background::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+}
+
+.glass-background::before {
+  background: radial-gradient(
+    circle at 20% 50%,
+    var(--gradient-1) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 80% 80%,
+    var(--gradient-2) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 40% 20%,
+    var(--gradient-3) 0%,
+    transparent 50%
+  );
+  animation: gradient-rotate 60s ease infinite;
+}
+
+.glass-background::after {
+  background: radial-gradient(
+    circle at 60% 70%,
+    var(--gradient-4) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 30% 90%,
+    var(--gradient-1) 0%,
+    transparent 50%
+  );
+  animation: gradient-rotate 80s ease-in-out infinite reverse;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .glass-background::before,
+  .glass-background::after {
+    animation: none;
+  }
+  
+  .glass-container,
+  .glass-card {
+    transition: none;
+  }
+}
+
+/* Ensure text readability on glass surfaces */
+.glass-container,
+.glass-card {
+  color: inherit;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .glass-container,
+html.dark .glass-card {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
