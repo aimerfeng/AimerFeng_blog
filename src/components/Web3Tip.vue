@@ -212,33 +212,9 @@ async function sendTip() {
 
 // 发送 Solana 打赏
 async function sendSolanaTip() {
-  const solana = (window as any).solana
-  
-  // 动态导入 Solana Web3.js
-  const { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } = await import('@solana/web3.js')
-  
-  const connection = new Connection(currentChain.value.rpcUrl, 'confirmed')
-  const fromPubkey = new PublicKey(userAddress.value)
-  const toPubkey = new PublicKey(recipientAddress.value)
-  
-  const lamports = Math.floor(parseFloat(tipAmount.value) * LAMPORTS_PER_SOL)
-  
-  const transaction = new Transaction().add(
-    SystemProgram.transfer({
-      fromPubkey,
-      toPubkey,
-      lamports,
-    })
-  )
-  
-  transaction.feePayer = fromPubkey
-  const { blockhash } = await connection.getLatestBlockhash()
-  transaction.recentBlockhash = blockhash
-  
-  const signed = await solana.signTransaction(transaction)
-  const signature = await connection.sendRawTransaction(signed.serialize())
-  
-  txHash.value = signature
+  // Solana 功能暂时禁用，需要安装 @solana/web3.js 依赖
+  error.value = 'Solana 打赏功能即将上线，敬请期待！'
+  throw new Error('Solana 打赏功能暂未启用')
 }
 
 // 发送 EVM 打赏
