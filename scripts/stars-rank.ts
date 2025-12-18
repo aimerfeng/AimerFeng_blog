@@ -1,6 +1,6 @@
 export function getStarsRankingUrl() {
   const users = [
-    'antfu',
+    'aimerfeng',
     'codecember',
     'knightly',
     'slidevjs',

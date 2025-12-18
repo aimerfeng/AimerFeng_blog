@@ -1,39 +1,31 @@
 <template>
   <p>
-    If you enjoy my work and find them useful,
-    consider sponsor me and the ecosystem to help Open Source sustainable. Thank you!
+    如果你喜欢我的内容，欢迎通过以下方式支持我的创作！
   </p>
 
-  <p flex="~ gap-2 wrap items-center">
-    <SponsorButtonCollective />
-    <span op50 text-sm>
-      <a href="/posts/sponsorship-forwarding" target="_blank">How does this work?</a>
-    </span>
-  </p>
   <p flex="~ gap-2 wrap">
     <a
-      href="https://github.com/sponsors/antfu"
+      href="https://github.com/aimerfeng"
       target="_blank"
       class="group btn-rose inline-block"
     >
       <div
-        i-ph-heart-duotone
-        group-hover="i-ph-heart-fill text-rose"
+        i-ph-github-logo-duotone
+        group-hover="i-ph-github-logo-fill"
         transition-all duration-200 ease-out
       />
-      Sponsor to support Anthony
+      Follow on GitHub
     </a>
     <a
-      href="https://afdian.com/a/antfu"
+      href="https://x.com/aimer71976"
       target="_blank"
-      class="group btn-yellow inline-block"
+      class="group btn-blue inline-block"
     >
       <div
-        i-ph-lightning-duotone
-        group-hover="i-ph-lightning-fill text-yellow"
+        i-ri-twitter-x-fill
         transition-all duration-200 ease-out
       />
-      在爱发电上支持我
+      Follow on X
     </a>
   </p>
 </template>

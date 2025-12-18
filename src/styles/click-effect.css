@@ -1,0 +1,106 @@
+/**
+ * Click Effect Styles
+ * 
+ * Provides visual feedback for user clicks/taps with animated effects.
+ * Uses CSS transform and opacity for optimal performance.
+ * 
+ * Requirements: 7.2, 7.5, 8.1, 8.2, 8.5
+ */
+
+/* Container for all click effects */
+.click-effect-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  /* Performance: Contain layout and paint */
+  contain: layout style paint;
+  /* GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Individual click effect element */
+.click-effect {
+  position: fixed;
+  pointer-events: none; /* Requirement 8.4: Non-interference */
+  border-radius: 50%;
+  transform: translate3d(-50%, -50%, 0); /* GPU acceleration with translate3d */
+  animation: click-effect-expand forwards;
+  will-change: transform, opacity; /* Performance optimization */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* Contain paint to prevent layout thrashing */
+  contain: layout paint;
+}
+
+/* Light theme colors - Requirement 8.1 */
+.click-effect {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.4) 0%,
+    rgba(59, 130, 246, 0) 70%
+  );
+  border: 2px solid rgba(59, 130, 246, 0.6);
+}
+
+/* Dark theme colors - Requirement 8.2 */
+.dark .click-effect {
+  background: radial-gradient(
+    circle,
+    rgba(96, 165, 250, 0.4) 0%,
+    rgba(96, 165, 250, 0) 70%
+  );
+  border: 2px solid rgba(96, 165, 250, 0.6);
+}
+
+/**
+ * Click effect expansion animation
+ * 
+ * Duration: 500ms - 1000ms (configurable via inline style)
+ * Uses transform and opacity for GPU acceleration (Requirement 8.5)
+ * Requirement 7.2: Animation with expansion and fade-out
+ */
+@keyframes click-effect-expand {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Smooth theme transitions */
+.click-effect {
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Alternative animation for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .click-effect {
+    animation: click-effect-fade forwards;
+  }
+
+  @keyframes click-effect-fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+

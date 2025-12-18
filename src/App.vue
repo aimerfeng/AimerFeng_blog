@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import ClickEffect from './components/ClickEffect.vue'
+import LoadingAnimation from './components/LoadingAnimation.vue'
+
 const route = useRoute()
 
 const imageModel = ref<HTMLImageElement>()
 const imageAlt = ref<string>()
+const isLoadingComplete = ref(false)
+
+// Handle loading completion
+function handleLoadingComplete() {
+  isLoadingComplete.value = true
+}
 
 function setImageModel(img: HTMLImageElement) {
   imageModel.value = img
@@ -74,11 +83,36 @@ onKeyStroke('Escape', (e) => {
 </script>
 
 <template>
-  <NavBar />
-  <main class="px-7 py-10 of-x-hidden">
-    <RouterView />
-    <Footer :key="route.path" />
-  </main>
+  <!-- Loading Animation - displayed before main content -->
+  <LoadingAnimation
+    :min-duration="1000"
+    :fade-duration="600"
+    @complete="handleLoadingComplete"
+  />
+
+  <!-- Click Effect Component -->
+  <ClickEffect
+    :max-effects="10"
+    :duration="800"
+    :size="30"
+  />
+
+  <!-- Main Content - hidden during loading -->
+  <div
+    :style="{
+      opacity: isLoadingComplete ? 1 : 0,
+      pointerEvents: isLoadingComplete ? 'auto' : 'none',
+      transition: 'opacity 0.3s ease-in-out',
+    }"
+  >
+    <NavBar />
+    <main class="px-7 py-10 of-x-hidden">
+      <RouterView />
+      <Footer :key="route.path" />
+    </main>
+  </div>
+
+  <!-- Image Preview Modal (existing functionality) -->
   <Transition name="fade">
     <div v-if="imageModel" fixed top-0 left-0 right-0 bottom-0 z-500 backdrop-blur-7 @click="imageModel = undefined">
       <div absolute top-0 left-0 right-0 bottom-0 bg-black:50 z--1 />

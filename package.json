@@ -1,18 +1,21 @@
 {
   "name": "aimerfeng-blog",
-  "version": "1.0.0",
   "description": "AimerFeng's personal blog focused on Web3 and AI technologies",
   "author": "AimerFeng (然然)",
   "type": "module",
+  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@10.19.0",
   "scripts": {
     "build": "npm run static && cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && cp _dist_redirects dist/_redirects",
     "dev": "vite --port 3333 --open",
     "preview": "vite preview",
-    "static": "rimraf temp && degit antfu/static temp --force && tsx scripts/copy-sponsors",
+    "static": "echo 'Static assets generation skipped'",
     "redirects": "tsx scripts/redirects.ts",
     "lint": "eslint .",
+    "test": "vitest --run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest",
     "compress": "tsx scripts/img-compress-staged.ts",
     "photos": "tsx scripts/photos-manage.ts",
     "prepare": "simple-git-hooks"
@@ -40,9 +43,11 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@antfu/utils": "catalog:frontend",
+    "@fast-check/vitest": "catalog:dev",
     "@iconify/json": "catalog:dev",
     "@octokit/core": "catalog:dev",
     "@octokit/rest": "catalog:dev",
+    "@vue/test-utils": "catalog:dev",
     "@shikijs/markdown-it": "catalog:build",
     "@shikijs/transformers": "catalog:build",
     "@shikijs/twoslash": "catalog:build",
@@ -59,6 +64,7 @@
     "@unocss/preset-web-fonts": "catalog:build",
     "@unpic/placeholder": "catalog:frontend",
     "@vitejs/plugin-vue": "catalog:build",
+    "@vitest/ui": "catalog:dev",
     "ansis": "catalog:dev",
     "blurhash": "catalog:dev",
     "cross-env": "catalog:dev",
@@ -67,10 +73,13 @@
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
     "exifreader": "catalog:dev",
+    "fast-check": "catalog:dev",
     "fast-glob": "catalog:dev",
     "feed": "catalog:dev",
     "fs-extra": "catalog:dev",
     "gray-matter": "catalog:build",
+    "happy-dom": "catalog:dev",
+    "jsdom": "catalog:dev",
     "lint-staged": "catalog:dev",
     "markdown-it": "catalog:build",
     "markdown-it-anchor": "catalog:build",
@@ -97,7 +106,8 @@
     "vite-plugin-inspect": "catalog:build",
     "vite-plugin-optimize-exclude": "catalog:build",
     "vite-ssg": "catalog:build",
-    "vite-svg-loader": "catalog:build"
+    "vite-svg-loader": "catalog:build",
+    "vitest": "catalog:dev"
   },
   "resolutions": {
     "vite": "catalog:build"

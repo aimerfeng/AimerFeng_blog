@@ -139,9 +139,6 @@ tags: [web3, blockchain]
 
 本项目基于 [CC BY-NC-SA 4.0](./CC-BY-NC-SA-4.0) 许可证开源。
 
-## 🙏 致谢
-
-
 ---
 
 **AimerFeng (然然)** - Web3 & AI 技术分享者
