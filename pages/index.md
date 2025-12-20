@@ -19,6 +19,8 @@ I'm constantly exploring new technologies and experimenting with creative ideas.
 
 Outside of coding, I'm interested in the philosophy of decentralization, the future of AI, and how these technologies can create a better world. I believe in open source and the power of community-driven innovation.
 
+<GitHubContributions />
+
 <div flex-auto />
 
 ---
