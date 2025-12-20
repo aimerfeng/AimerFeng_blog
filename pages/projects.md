@@ -50,6 +50,10 @@ projects:
       icon: 'i-carbon-chart-line'
 
   AI & Machine Learning:
+    - name: 'Gemini Prompt Optimizer'
+      link: 'https://github.com/aimerfeng/gemini-'
+      desc: 'Intelligent prompt optimization tool powered by Gemini API for better AI outputs'
+      icon: 'i-carbon-text-creation'
     - name: 'PaddleGAN Video Super Resolution'
       link: 'https://github.com/aimerfeng/PaddleGAN-real-sr'
       desc: 'Video super-resolution and restoration using PaddleGAN deep learning models'
