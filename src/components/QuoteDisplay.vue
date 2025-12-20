@@ -7,7 +7,7 @@ interface Props {
   animationDuration?: number
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   animationDuration: 800,
 })
 
@@ -42,8 +42,8 @@ function handleEnter() {
     </blockquote>
     <button
       class="entry-button"
-      @click="handleEnter"
       aria-label="Enter site"
+      @click="handleEnter"
     >
       <span class="button-text">Enter</span>
       <span class="button-icon">→</span>

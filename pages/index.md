@@ -5,7 +5,7 @@ image: https://aimerfeng.me/og.png
 art: random
 ---
 
-Hey! I'm AimerFeng (然然), a passionate Web3 and AI developer.
+Hey! I'm AimerFeng (然然), a passionate Web3 and AI developer. <a href="https://aimerfeng.github.io/aimerfeng-cv/" target="_blank" class="op75 hover:op100 transition-opacity"><span i-carbon-document /> CV</a>
 
 Exploring the intersection of {Blockchain} {Smart Contracts} {AI Agents}<br>
 Building with {Ethereum} {Solidity} {Python} {TypeScript}<br>

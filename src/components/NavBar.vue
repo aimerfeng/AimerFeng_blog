@@ -38,10 +38,10 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Projects</span>
           <div i-ri-lightbulb-line class="md:hidden" />
         </RouterLink>
-        <RouterLink to="/resume" title="Resume">
+        <a href="https://aimerfeng.github.io/aimerfeng-cv/" target="_blank" title="Resume">
           <span class="lt-md:hidden">Resume</span>
           <div i-carbon-document class="md:hidden" />
-        </RouterLink>
+        </a>
         <a href="https://x.com/aimer71976" target="_blank" title="X (Twitter)" class="lt-md:hidden">
           <div i-ri-twitter-x-fill />
         </a>

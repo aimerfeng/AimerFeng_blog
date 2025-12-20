@@ -1,323 +1,152 @@
 ---
-title: Resume - AimerFeng
-display: Resume
-description: Professional experience and skills
-wrapperClass: 'resume-page'
+title: 我的故事 - AimerFeng
+display: 我的故事
+description: 关于我的经历、思考与成长
+wrapperClass: 'philosophy-page'
 ---
 
-<script setup>
-import { resumeData } from '../src/data/resumeData'
-import ResumeSection from '../src/components/ResumeSection.vue'
+<div class="philosophy-container">
 
-function getSocialIcon(platform) {
-  const icons = {
-    'GitHub': 'i-carbon-logo-github',
-    'Twitter': 'i-carbon-logo-twitter',
-    'LinkedIn': 'i-carbon-logo-linkedin',
-    'Website': 'i-carbon-link',
-  }
-  return icons[platform] || 'i-carbon-link'
-}
-</script>
+## 关于我
 
-<div class="resume-container">
-  <!-- Personal Header -->
-  <header class="resume-header">
-    <h1 class="name">{{ resumeData.personal.name }}</h1>
-    <p class="title">{{ resumeData.personal.title }}</p>
-    <div class="contact-info">
-      <span class="contact-item">
-        <span class="i-carbon-email" />
-        <a :href="`mailto:${resumeData.personal.email}`">{{ resumeData.personal.email }}</a>
-      </span>
-      <span class="contact-item">
-        <span class="i-carbon-location" />
-        {{ resumeData.personal.location }}
-      </span>
-    </div>
-    <div class="social-links">
-      <a
-        v-for="link in resumeData.personal.links"
-        :key="link.platform"
-        :href="link.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span :class="getSocialIcon(link.platform)" />
-        {{ link.platform }}
-      </a>
-    </div>
-  </header>
+我是李浩然，网名 AimerFeng，一个来自成都的开发者。
 
-  <!-- Summary -->
-  <section class="summary-section">
-    <p class="summary-text">{{ resumeData.summary }}</p>
-  </section>
+> "从每一次的 Spec 都是我和代码的美好邂逅"
 
-  <!-- Experience -->
-  <ResumeSection
-    title="Experience"
-    icon="i-carbon-portfolio"
-    :items="resumeData.experience"
-  />
+我相信代码不仅仅是工具，更是表达思想的方式。每一个项目都是一次探索，每一行代码都承载着对问题的理解和对优雅的追求。
 
-  <!-- Education -->
-  <ResumeSection
-    title="Education"
-    icon="i-carbon-education"
-    :items="resumeData.education"
-  />
+---
 
-  <!-- Skills -->
-  <section class="resume-section skills-section">
-    <h2 class="section-title">
-      <span class="i-carbon-skill-level title-icon" />
-      Skills
-    </h2>
-    <div class="skills-grid">
-      <div
-        v-for="skillGroup in resumeData.skills"
-        :key="skillGroup.category"
-        class="skill-group"
-      >
-        <h3 class="skill-category">{{ skillGroup.category }}</h3>
-        <div class="skill-items">
-          <span
-            v-for="skill in skillGroup.items"
-            :key="skill"
-            class="skill-tag"
-          >
-            {{ skill }}
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
+## 我的旅程
 
-  <!-- Projects -->
-  <ResumeSection
-    title="Notable Projects"
-    icon="i-carbon-application"
-    :items="resumeData.projects"
-  />
+**2024** — 在钧誉资产科技有限公司，我参与构建了量化投资回测系统。这段经历让我深刻理解了金融与技术的交汇点，也让我对数据驱动的决策有了更深的认识。
+
+**现在** — 我专注于 Web3 和 AI 领域的探索。智能合约、去中心化应用、大语言模型... 这些技术正在重塑我们与数字世界的关系。
+
+---
+
+## 我相信的事
+
+### 去中心化的力量
+
+区块链不只是技术，更是一种哲学。它代表着：
+
+- **信任的重构** — 用数学和密码学取代中心化的权威
+- **价值的自由** — 让每个人真正拥有自己的数字资产
+- **协作的进化** — 通过智能合约实现无需信任的合作
+
+### AI 是伙伴，不是威胁
+
+当我与 AI 协作编程时，我看到的不是替代，而是增强。AI 帮助我们突破认知的边界，让创意更快地变成现实。
+
+**但核心永远是人** — 是我们定义问题，是我们赋予意义，是我们决定方向。
+
+### 开源精神
+
+> "Standing on the shoulders of giants"
+
+我所拥有的一切技能，都来自开源社区的馈赠。因此，我也选择回馈 — 写博客分享知识，贡献代码参与开源，在社区中帮助他人。
+
+---
+
+## 简约之美
+
+> "Simplicity is the ultimate sophistication." — Leonardo da Vinci
+
+无论是代码、设计还是生活，我都追求简约。
+
+复杂是容易的，简单是困难的。真正的优雅，是用最少的元素表达最丰富的内涵。
+
+---
+
+## 持续学习
+
+技术在变，世界在变，唯一不变的是变化本身。
+
+我选择拥抱变化：保持好奇心，保持谦逊，保持行动。
+
+---
+
+<div class="philosophy-footer">
+  <p>📄 查看我的 <a href="https://aimerfeng.github.io/aimerfeng-cv/" target="_blank">专业简历</a></p>
+  <p>💬 在 <a href="https://x.com/aimer71976" target="_blank">X (Twitter)</a> 上与我交流</p>
+  <p>📧 或者发邮件到 <a href="mailto:2002lihaoran@gmail.com">2002lihaoran@gmail.com</a></p>
+</div>
+
 </div>
 
 <style scoped>
-.resume-container {
-  max-width: 900px;
+.philosophy-container {
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-.resume-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid rgba(125, 125, 125, 0.3);
-}
-
-.name {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--fg-deep);
-  margin: 0 0 0.5rem 0;
-}
-
-.title {
-  font-size: 1.25rem;
-  color: var(--fg);
-  margin: 0 0 1.5rem 0;
-  font-weight: 400;
-}
-
-.contact-info {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+.philosophy-container h2 {
+  margin-top: 3rem;
   margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9375rem;
-  color: var(--fg);
-}
-
-.contact-item a {
-  color: var(--fg-deep);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-item a:hover {
-  color: var(--fg-deeper);
-  text-decoration: underline;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.9375rem;
-  color: var(--fg-deep);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.social-link:hover {
-  color: var(--fg-deeper);
-  transform: translateY(-2px);
-}
-
-.summary-section {
-  margin-bottom: 3rem;
-}
-
-.summary-text {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--fg);
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.skills-section {
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   font-size: 1.5rem;
-  font-weight: 600;
   color: var(--fg-deep);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(125, 125, 125, 0.3);
 }
 
-.title-icon {
-  font-size: 1.25rem;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.skill-group {
-  padding: 1rem;
-  background: rgba(136, 136, 136, 0.05);
-  border: 1px solid rgba(125, 125, 125, 0.3);
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.skill-group:hover {
-  background: rgba(136, 136, 136, 0.1);
-  border-color: var(--fg-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.skill-category {
-  font-size: 1.0625rem;
-  font-weight: 600;
+.philosophy-container h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
   color: var(--fg-deep);
-  margin: 0 0 0.75rem 0;
 }
 
-.skill-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-tag {
-  display: inline-block;
-  padding: 0.25rem 0.625rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
+.philosophy-container blockquote {
+  font-style: italic;
+  border-left: 3px solid var(--fg-deep);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
   color: var(--fg);
-  background: var(--c-bg);
-  border: 1px solid rgba(125, 125, 125, 0.3);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  opacity: 0.9;
 }
 
-.skill-tag:hover {
+.philosophy-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.philosophy-container ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.philosophy-container ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
   color: var(--fg-deep);
-  border-color: var(--fg-deep);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .resume-container {
-    padding: 1.5rem 1rem;
-  }
-
-  .resume-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .name {
-    font-size: 2rem;
-  }
-
-  .title {
-    font-size: 1.125rem;
-  }
-
-  .contact-info {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .social-links {
-    gap: 1rem;
-  }
-
-  .summary-text {
-    font-size: 1rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+.philosophy-container hr {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 1px solid rgba(125, 125, 125, 0.2);
 }
 
-@media (max-width: 480px) {
-  .name {
-    font-size: 1.75rem;
-  }
+.philosophy-container strong {
+  color: var(--fg-deep);
+}
 
-  .title {
-    font-size: 1rem;
-  }
+.philosophy-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(125, 125, 125, 0.3);
+  text-align: center;
+  font-size: 0.95rem;
+}
 
-  .contact-item,
-  .social-link {
-    font-size: 0.875rem;
-  }
+.philosophy-footer p {
+  margin: 0.5rem 0;
+}
 
-  .summary-text {
-    font-size: 0.9375rem;
-  }
+.philosophy-footer a {
+  color: var(--fg-deep);
+  text-decoration: underline;
 }
 </style>
