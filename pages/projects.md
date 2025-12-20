@@ -6,6 +6,14 @@ wrapperClass: 'text-center'
 art: dots
 projects:
   Web3 & Blockchain:
+    - name: 'AI Smart Wallet'
+      link: 'https://github.com/aimerfeng/AI-Smart-Wallet'
+      desc: 'AI-powered smart wallet with intelligent transaction analysis and security features'
+      icon: 'i-carbon-wallet'
+    - name: 'Blog Reward System'
+      link: 'https://github.com/aimerfeng/bolg_reward'
+      desc: 'Web3 tipping and reward system for blog content creators'
+      icon: 'i-carbon-gift'
     - name: 'DeFi Yield Aggregator'
       link: 'https://github.com/aimerfeng/defi-yield'
       desc: 'Multi-chain DeFi yield optimization platform with smart contract integration'
@@ -22,10 +30,6 @@ projects:
       link: 'https://github.com/aimerfeng/cross-chain-bridge'
       desc: 'Secure asset bridge between Ethereum, BSC, and Polygon networks'
       icon: 'i-carbon-network-3'
-    - name: 'Web3 Wallet SDK'
-      link: 'https://github.com/aimerfeng/web3-wallet-sdk'
-      desc: 'Universal wallet connection library supporting MetaMask, WalletConnect, and more'
-      icon: 'i-carbon-wallet'
 
   Smart Contract Development:
     - name: 'Solidity Utils'
@@ -46,6 +50,10 @@ projects:
       icon: 'i-carbon-chart-line'
 
   AI & Machine Learning:
+    - name: 'PaddleGAN Video Super Resolution'
+      link: 'https://github.com/aimerfeng/PaddleGAN-real-sr'
+      desc: 'Video super-resolution and restoration using PaddleGAN deep learning models'
+      icon: 'i-carbon-video'
     - name: 'LLM Agent Framework'
       link: 'https://github.com/aimerfeng/llm-agent'
       desc: 'Modular framework for building AI agents with LangChain and OpenAI'

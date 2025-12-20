@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { isDark } from '~/logics'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useLoadingState } from '../composables/useLoadingState'
 
 /**
@@ -11,10 +10,6 @@ interface LoadingAnimationProps {
   minDuration?: number
   /** Fade-out transition duration in milliseconds (default: 600) */
   fadeDuration?: number
-  /** Custom logo source for light theme (default: '/logo.svg') */
-  logoSrc?: string
-  /** Custom logo source for dark theme (default: '/logo-dark.svg') */
-  logoDarkSrc?: string
 }
 
 /**
@@ -28,8 +23,6 @@ interface LoadingAnimationEmits {
 const props = withDefaults(defineProps<LoadingAnimationProps>(), {
   minDuration: 1000,
   fadeDuration: 600,
-  logoSrc: '/logo.svg',
-  logoDarkSrc: '/logo-dark.svg',
 })
 
 const emit = defineEmits<LoadingAnimationEmits>()
@@ -37,33 +30,9 @@ const emit = defineEmits<LoadingAnimationEmits>()
 const { isLoading, progress, finishLoading } = useLoadingState()
 const isFadingOut = ref(false)
 const canSkip = ref(false)
-const currentTheme = ref(isDark.value ? 'dark' : 'light')
-const logoError = ref(false)
 let skipTimeout: ReturnType<typeof setTimeout> | null = null
 let loadHandler: (() => void) | null = null
 let skipHandler: ((e: KeyboardEvent | MouseEvent) => void) | null = null
-
-/**
- * Computed property for theme-aware logo selection
- * Returns the appropriate logo based on current theme
- * Falls back to default logo if custom logo fails to load
- */
-const currentLogo = computed(() => {
-  if (logoError.value) {
-    return '/logo.svg' // Fallback to default logo
-  }
-  return isDark.value ? props.logoDarkSrc : props.logoSrc
-})
-
-/**
- * Watch for theme changes and update component state
- * This ensures smooth transitions when user toggles theme
- */
-watch(isDark, (newValue) => {
-  currentTheme.value = newValue ? 'dark' : 'light'
-  // Reset error state when theme changes to retry loading
-  logoError.value = false
-}, { immediate: true })
 
 /**
  * Handle the completion of loading
@@ -93,17 +62,6 @@ function handleSkip(_e: KeyboardEvent | MouseEvent) {
   // For keyboard events, accept any key
   // For mouse events, accept any click
   handleLoadComplete()
-}
-
-/**
- * Handle logo loading errors
- * Falls back to default logo and logs warning
- */
-function handleLogoError(_e: Event) {
-  if (!logoError.value) {
-    logoError.value = true
-    console.warn('Custom logo failed to load, using default logo')
-  }
 }
 
 onMounted(() => {
@@ -159,14 +117,21 @@ onBeforeUnmount(() => {
 
       <!-- Loading content -->
       <div class="loading-content">
-        <!-- Logo -->
+        <!-- Animated Hexagon Logo with A -->
         <div class="loading-logo">
-          <img
-            :src="currentLogo"
-            alt="AimerFeng Blog Logo"
-            class="logo-image"
-            @error="handleLogoError"
-          >
+          <svg class="hex-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Hexagon path - animated one stroke drawing -->
+            <path
+              class="hex-path"
+              d="M50 5 L87 27.5 L87 72.5 L50 95 L13 72.5 L13 27.5 Z"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <!-- Letter A in center - fades in after hexagon -->
+            <text class="hex-letter" x="50" y="65" text-anchor="middle">A</text>
+          </svg>
         </div>
 
         <!-- Spinner -->
@@ -305,20 +270,89 @@ onBeforeUnmount(() => {
 .loading-logo {
   width: 120px;
   height: 120px;
-  animation: logo-pulse 2s ease-in-out infinite;
 }
 
-.logo-image {
+.hex-logo {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  filter: var(--loading-logo-filter-light);
-  /* Smooth filter transition for theme changes */
-  transition: filter 0.3s ease-in-out;
 }
 
-:global(html.dark) .logo-image {
-  filter: var(--loading-logo-filter-dark);
+/* Hexagon path - one stroke animation */
+.hex-path {
+  stroke: var(--loading-spinner-light);
+  stroke-dasharray: 350;
+  stroke-dashoffset: 350;
+  animation:
+    draw-hex 2s ease-in-out forwards,
+    hex-pulse 2s ease-in-out 2s infinite;
+  transition: stroke 0.3s ease-in-out;
+}
+
+:global(html.dark) .hex-path {
+  stroke: var(--loading-spinner-dark);
+}
+
+/* Letter A - fades in after hexagon is drawn */
+.hex-letter {
+  fill: var(--loading-text-primary-light);
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  opacity: 0;
+  animation:
+    fade-in-letter 0.5s ease-out 1.5s forwards,
+    letter-pulse 2s ease-in-out 2s infinite;
+  transition: fill 0.3s ease-in-out;
+}
+
+:global(html.dark) .hex-letter {
+  fill: var(--loading-text-primary-dark);
+}
+
+/* Draw hexagon animation */
+@keyframes draw-hex {
+  0% {
+    stroke-dashoffset: 350;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Hexagon pulse after drawn */
+@keyframes hex-pulse {
+  0%,
+  100% {
+    stroke-opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    stroke-opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+/* Letter fade in */
+@keyframes fade-in-letter {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Letter pulse */
+@keyframes letter-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 /* ============================================
@@ -433,18 +467,6 @@ onBeforeUnmount(() => {
    Animations - GPU Accelerated
    ============================================ */
 
-@keyframes logo-pulse {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate3d(0, 0, 0) scale(1.05);
-    opacity: 0.9;
-  }
-}
-
 @keyframes spinner-rotate {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
@@ -495,6 +517,10 @@ onBeforeUnmount(() => {
     height: 80px;
   }
 
+  .hex-letter {
+    font-size: 36px;
+  }
+
   .loading-spinner {
     width: 50px;
     height: 50px;
@@ -515,6 +541,10 @@ onBeforeUnmount(() => {
     height: 100px;
   }
 
+  .hex-letter {
+    font-size: 40px;
+  }
+
   .loading-spinner {
     width: 55px;
     height: 55px;
@@ -523,11 +553,20 @@ onBeforeUnmount(() => {
 
 /* Accessibility - Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .loading-logo,
+  .hex-path,
+  .hex-letter,
   .spinner-ring,
   .text-primary,
   .text-skip {
     animation: none;
+  }
+
+  .hex-path {
+    stroke-dashoffset: 0;
+  }
+
+  .hex-letter {
+    opacity: 1;
   }
 
   .loading-fade-enter-active,
@@ -552,11 +591,14 @@ onBeforeUnmount(() => {
 }
 
 /* will-change hints for animated elements */
-.loading-logo {
-  will-change: transform, opacity;
-  /* GPU acceleration */
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
+.hex-path {
+  will-change: stroke-dashoffset, stroke-opacity, transform;
+  transform-origin: center;
+}
+
+.hex-letter {
+  will-change: opacity, transform;
+  transform-origin: center;
 }
 
 .spinner-ring {
