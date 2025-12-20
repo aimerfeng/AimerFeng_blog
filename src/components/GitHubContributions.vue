@@ -2,12 +2,16 @@
 import { isDark } from '~/logics'
 
 const username = 'aimerfeng'
-const statsBaseUrl = 'https://github-readme-stats-4gttgrkur-aimerfengli-2226s-projects.vercel.app'
+const statsBaseUrl = 'https://github-readme-stats-omega-black-83.vercel.app'
+
+// 蛇吃绿墙动画 - 来自你的 GitHub Actions 生成
+const snakeSvgDark = 'https://github.com/AimerFeng/AimerFeng/raw/output/github-contribution-grid-snake-dark.svg'
+const snakeSvgLight = 'https://github.com/AimerFeng/AimerFeng/raw/output/github-contribution-grid-snake.svg'
 </script>
 
 <template>
   <div class="github-contributions my-6">
-    <!-- GitHub Contribution Graph (绿墙) -->
+    <!-- 蛇吃绿墙动画 -->
     <a
       :href="`https://github.com/${username}`"
       target="_blank"
@@ -15,8 +19,8 @@ const statsBaseUrl = 'https://github-readme-stats-4gttgrkur-aimerfengli-2226s-pr
       class="block"
     >
       <img
-        :src="`https://ghchart.rshah.org/${isDark ? '4ade80' : '22863a'}/${username}`"
-        :alt="`${username}'s GitHub Contribution Graph`"
+        :src="isDark ? snakeSvgDark : snakeSvgLight"
+        :alt="`${username}'s GitHub Contribution Snake`"
         class="w-full rounded-lg hover:scale-102 transition-transform"
         loading="lazy"
       >
