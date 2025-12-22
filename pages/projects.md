@@ -50,6 +50,10 @@ projects:
       icon: 'i-carbon-chart-line'
 
   AI & Machine Learning:
+    - name: 'HR QA System'
+      link: 'https://github.com/aimerfeng/hr-qa-system'
+      desc: 'AI-powered HR Q&A system with natural language query support'
+      icon: 'i-carbon-chat-bot'
     - name: 'Gemini Prompt Optimizer'
       link: 'https://github.com/aimerfeng/gemini-'
       desc: 'Intelligent prompt optimization tool powered by Gemini API for better AI outputs'

@@ -5,8 +5,8 @@ const username = 'aimerfeng'
 const statsBaseUrl = 'https://github-readme-stats-omega-black-83.vercel.app'
 
 // 蛇吃绿墙动画 - 来自你的 GitHub Actions 生成
-const snakeSvgDark = 'https://github.com/AimerFeng/AimerFeng/raw/output/github-contribution-grid-snake-dark.svg'
-const snakeSvgLight = 'https://github.com/AimerFeng/AimerFeng/raw/output/github-contribution-grid-snake.svg'
+const snakeSvgDark = 'https://github.com/aimerfeng/aimerfeng/raw/output/github-contribution-grid-snake-dark.svg'
+const snakeSvgLight = 'https://github.com/aimerfeng/aimerfeng/raw/output/github-contribution-grid-snake.svg'
 </script>
 
 <template>
