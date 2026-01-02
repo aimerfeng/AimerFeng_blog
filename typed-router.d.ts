@@ -135,6 +135,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/gemini-api-tutorial': RouteRecordInfo<
+      '/posts/gemini-api-tutorial',
+      '/posts/gemini-api-tutorial',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/gemini-prompt-optimizer': RouteRecordInfo<
+      '/posts/gemini-prompt-optimizer',
+      '/posts/gemini-prompt-optimizer',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/get-package-root': RouteRecordInfo<
       '/posts/get-package-root',
       '/posts/get-package-root',
@@ -152,6 +166,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/github-co-authors': RouteRecordInfo<
       '/posts/github-co-authors',
       '/posts/github-co-authors',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/hr-qa-system': RouteRecordInfo<
+      '/posts/hr-qa-system',
+      '/posts/hr-qa-system',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -271,6 +292,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/pnpm-external-disk': RouteRecordInfo<
       '/posts/pnpm-external-disk',
       '/posts/pnpm-external-disk',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/prompt-engineering-best-practices': RouteRecordInfo<
+      '/posts/prompt-engineering-best-practices',
+      '/posts/prompt-engineering-best-practices',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -422,6 +450,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/resume': RouteRecordInfo<
+      '/resume',
+      '/resume',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -531,6 +566,18 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/gemini-api-tutorial.md': {
+      routes:
+        | '/posts/gemini-api-tutorial'
+      views:
+        | never
+    }
+    'pages/posts/gemini-prompt-optimizer.md': {
+      routes:
+        | '/posts/gemini-prompt-optimizer'
+      views:
+        | never
+    }
     'pages/posts/get-package-root.md': {
       routes:
         | '/posts/get-package-root'
@@ -546,6 +593,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/github-co-authors.md': {
       routes:
         | '/posts/github-co-authors'
+      views:
+        | never
+    }
+    'pages/posts/hr-qa-system.md': {
+      routes:
+        | '/posts/hr-qa-system'
       views:
         | never
     }
@@ -648,6 +701,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/pnpm-external-disk.md': {
       routes:
         | '/posts/pnpm-external-disk'
+      views:
+        | never
+    }
+    'pages/posts/prompt-engineering-best-practices.md': {
+      routes:
+        | '/posts/prompt-engineering-best-practices'
       views:
         | never
     }
@@ -774,6 +833,12 @@ declare module 'vue-router/auto-routes' {
     'pages/projects.md': {
       routes:
         | '/projects'
+      views:
+        | never
+    }
+    'pages/resume.md': {
+      routes:
+        | '/resume'
       views:
         | never
     }
