@@ -42,6 +42,10 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Resume</span>
           <div i-carbon-document class="md:hidden" />
         </a>
+        <RouterLink to="/admin" title="投稿">
+          <span class="lt-md:hidden">投稿</span>
+          <div i-carbon-edit class="md:hidden" />
+        </RouterLink>
         <a href="https://x.com/aimer71976" target="_blank" title="X (Twitter)" class="lt-md:hidden">
           <div i-ri-twitter-x-fill />
         </a>
