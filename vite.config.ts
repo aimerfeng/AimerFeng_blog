@@ -175,7 +175,7 @@ export default defineConfig({
               ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
               : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
           )
-          frontmatter.image = `https://aimerfeng.me/${path}`
+          frontmatter.image = `https://aimer-feng-blog.vercel.app/${path}`
         })()
         const head = defaults(frontmatter, options)
         return { head, frontmatter }

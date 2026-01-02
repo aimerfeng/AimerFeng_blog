@@ -1,7 +1,7 @@
 {
-  "name": "AimerFeng's Blog",
+  "name": "AimerFeng's Blog - Web3 & AI 技术博客",
   "short_name": "AimerFeng",
-  "description": "Personal blog and portfolio of AimerFeng",
+  "description": "AimerFeng 的个人技术博客 - 专注于 Web3、区块链、AI 智能体和大语言模型开发",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -20,5 +20,7 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "start_url": "/",
-  "scope": "/"
+  "scope": "/",
+  "lang": "zh-CN",
+  "categories": ["technology", "blog", "web3", "ai"]
 }

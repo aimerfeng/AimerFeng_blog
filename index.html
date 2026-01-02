@@ -1,48 +1,95 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="author" content="AimerFeng (然然)" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="revisit-after" content="7 days" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="AimerFeng 的个人技术博客 - 专注于 Web3、区块链、AI 智能体和大语言模型开发。分享 Ethereum、Solidity、Python、TypeScript 技术实践。"
+    />
+    <meta
+      name="keywords"
+      content="Web3, 区块链, AI, 人工智能, Ethereum, Solidity, DeFi, NFT, LLM, 大语言模型, 智能合约, Python, TypeScript, 前端开发"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aimer-feng-blog.vercel.app/" />
+
     <!-- Favicon - SVG with PNG fallback -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" />
-    
+
     <!-- Apple Touch Icon for iOS -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    
+
     <!-- Android Chrome Icons -->
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-    
+
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
-    
+
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="AimerFeng (然然)" />
-    <meta property="og:image" content="https://aimerfeng.me/og.png" />
+    <meta property="og:site_name" content="AimerFeng's Blog" />
+    <meta property="og:title" content="AimerFeng (然然) - Web3 & AI 开发者" />
+    <meta property="og:description" content="专注于 Web3、区块链、AI 智能体和大语言模型开发的技术博客" />
+    <meta property="og:url" content="https://aimer-feng-blog.vercel.app/" />
+    <meta property="og:image" content="https://aimer-feng-blog.vercel.app/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="AimerFeng's Blog" />
-    
+    <meta property="og:image:alt" content="AimerFeng's Blog - Web3 & AI Developer" />
+    <meta property="og:locale" content="zh_CN" />
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://aimerfeng.me/og.png" />
-    
+    <meta name="twitter:site" content="@aimer71976" />
+    <meta name="twitter:creator" content="@aimer71976" />
+    <meta name="twitter:title" content="AimerFeng (然然) - Web3 & AI 开发者" />
+    <meta name="twitter:description" content="专注于 Web3、区块链、AI 智能体和大语言模型开发的技术博客" />
+    <meta name="twitter:image" content="https://aimer-feng-blog.vercel.app/og.png" />
+
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
     <meta name="msapplication-TileColor" content="#ffffff" />
-    
+
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="AimerFeng's Blog" href="/feed.xml" />
-    
-    <title>AimerFeng (然然)</title>
-    
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AimerFeng's Blog",
+        "alternateName": "然然的技术博客",
+        "url": "https://aimer-feng-blog.vercel.app/",
+        "description": "专注于 Web3、区块链、AI 智能体和大语言模型开发的技术博客",
+        "author": {
+          "@type": "Person",
+          "name": "AimerFeng (然然)",
+          "url": "https://github.com/aimerfeng",
+          "sameAs": [
+            "https://github.com/aimerfeng",
+            "https://x.com/aimer71976",
+            "https://www.zhihu.com/people/aimerfeng-18"
+          ]
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://aimer-feng-blog.vercel.app/posts?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <title>AimerFeng (然然) - Web3 & AI 开发者</title>
+
     <!-- Theme Detection Script -->
     <script>
       ;(function () {

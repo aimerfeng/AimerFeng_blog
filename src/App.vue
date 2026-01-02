@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import BackToTop from './components/BackToTop.vue'
 import ClickEffect from './components/ClickEffect.vue'
 import LoadingAnimation from './components/LoadingAnimation.vue'
 import QuoteDisplay from './components/QuoteDisplay.vue'
+import ReadingProgress from './components/ReadingProgress.vue'
 
 const route = useRoute()
 
@@ -140,11 +142,17 @@ onKeyStroke('Escape', (e) => {
       transition: 'opacity 0.3s ease-in-out',
     }"
   >
+    <!-- Reading Progress Bar -->
+    <ReadingProgress :show-only-in-posts="true" />
+
     <NavBar />
     <main class="px-7 py-10 of-x-hidden">
       <RouterView />
       <Footer :key="route.path" />
     </main>
+
+    <!-- Back to Top Button -->
+    <BackToTop :threshold="400" />
   </div>
 
   <!-- Image Preview Modal (existing functionality) -->

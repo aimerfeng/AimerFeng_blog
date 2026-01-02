@@ -7,7 +7,7 @@
   "description": "AimerFeng's personal blog focused on Web3 and AI technologies",
   "author": "AimerFeng (然然)",
   "scripts": {
-    "build": "npm run static && cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && tsx ./scripts/copy-redirects.ts",
+    "build": "npm run static && cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && tsx ./scripts/sitemap.ts && tsx ./scripts/copy-redirects.ts",
     "dev": "vite --port 3333 --open",
     "preview": "vite preview",
     "static": "echo 'Static assets generation skipped'",

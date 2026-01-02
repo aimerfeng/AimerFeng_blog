@@ -6,7 +6,7 @@ import fs from 'fs-extra'
 import matter from 'gray-matter'
 import MarkdownIt from 'markdown-it'
 
-const DOMAIN = 'https://aimerfeng.me'
+const DOMAIN = 'https://aimer-feng-blog.vercel.app'
 const AUTHOR = {
   name: 'AimerFeng (然然)',
   email: '2002lihaoran@gmail.com',
@@ -27,14 +27,14 @@ async function buildBlogRSS() {
 
   const options = {
     title: 'AimerFeng (然然)',
-    description: 'AimerFeng\'s Blog - Web3 & AI',
-    id: 'https://aimerfeng.me/',
-    link: 'https://aimerfeng.me/',
+    description: 'AimerFeng\'s Blog - Web3 & AI 技术博客',
+    id: 'https://aimer-feng-blog.vercel.app/',
+    link: 'https://aimer-feng-blog.vercel.app/',
     copyright: 'CC BY-NC-SA 4.0 2024 © AimerFeng',
     feedLinks: {
-      json: 'https://aimerfeng.me/feed.json',
-      atom: 'https://aimerfeng.me/feed.atom',
-      rss: 'https://aimerfeng.me/feed.xml',
+      json: 'https://aimer-feng-blog.vercel.app/feed.json',
+      atom: 'https://aimer-feng-blog.vercel.app/feed.atom',
+      rss: 'https://aimer-feng-blog.vercel.app/feed.xml',
     },
   }
   const posts: any[] = (
@@ -71,8 +71,8 @@ async function buildBlogRSS() {
 
 async function writeFeed(name: string, options: FeedOptions, items: Item[]) {
   options.author = AUTHOR
-  options.image = 'https://aimerfeng.me/avatar.png'
-  options.favicon = 'https://aimerfeng.me/logo.png'
+  options.image = 'https://aimer-feng-blog.vercel.app/avatar.png'
+  options.favicon = 'https://aimer-feng-blog.vercel.app/logo.png'
 
   const feed = new Feed(options)
 

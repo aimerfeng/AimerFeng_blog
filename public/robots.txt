@@ -1,2 +1,12 @@
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://aimer-feng-blog.vercel.app/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /_*
